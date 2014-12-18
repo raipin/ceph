@@ -1035,7 +1035,7 @@ int do_export(ObjectStore *fs, coll_t coll, spg_t pgid, pg_info_t &info,
   ret = add_osdmap(fs, ms);
   if (ret)
     return ret;
-  ret = write_section(TYPE_PG_METADATA, ms, file_fd, features);
+  ret = write_section(TYPE_PG_METADATA, ms, file_fd, features | CEPH_FEATURE_RESERVED); // hack for OSDMap
   if (ret)
     return ret;
 
